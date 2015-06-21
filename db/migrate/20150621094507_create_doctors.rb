@@ -4,7 +4,7 @@ class CreateDoctors < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.date :dob
-      t.char :gender
+      t.string :gender
       t.integer :phone
       t.text :address
 
