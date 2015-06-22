@@ -21,4 +21,5 @@
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               patients_path, :class => 'btn btn-default'  %>
+<%= link_to 'View Appointments', patient_appointments_path(params[:id]), :class => 'btn btn-default' %>
 

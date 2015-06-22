@@ -1,12 +1,14 @@
-class AppointmentsController<ApplicationController
+class AppointmentsController < ApplicationController
 	def index
 		@appointments = Appointment.all
 	end
+
 	def new
-		@patient = Patient.all 
+		@patient = Patient.all
 		@doctor = Doctor.all
 		@appointment = Appointment.new
 	end
+
 	def create
 		modified_params= appointment_params.merge(doctor_id: params[:doctor_id], patient_id: params[:patient_id])
 		@appointment=Appointment.new(modified_params)
