@@ -18,56 +18,55 @@
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'form-control' %>
+      <%= f.text_field :name, :class => 'form-control', :style => 'width: 20%' %>
     </div>
     <%= error_span(@doctor[:name]) %>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :description, :class => 'form-control' %>
+      <%= f.text_field :description, :class => 'form-control', :style => 'width: 20%' %>
     </div>
     <%= error_span(@doctor[:description]) %>
   </div>
   <div class="control-group">
     <%= f.label :dob, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :dob, :class => 'form-control' %>
+      <%= f.text_field :dob, :class => 'form-control', :style => 'width: 20%' %>
     </div>
     <%= error_span(@doctor[:dob]) %>
   </div>
   <div class="control-group">
     <%= f.label :gender, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :gender, :class => 'form-control' %>
+      <%= f.text_field :gender, :class => 'form-control', :style => 'width: 20%' %>
     </div>
     <%= error_span(@doctor[:gender]) %>
   </div>
   <div class="control-group">
     <%= f.label :phone, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :phone, :class => 'form-control' %>
+      <%= f.text_field :phone, :class => 'form-control', :style => 'width: 20%' %>
     </div>
     <%= error_span(@doctor[:phone]) %>
   </div>
   <div class="control-group">
     <%= f.label :address, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :address, :class => 'form-control' %>
+      <%= f.text_field :address, :class => 'form-control', :style => 'width: 20%' %>
     </div>
     <%= error_span(@doctor[:address]) %>
   </div>
+
   <div class="control-group">
-    <%= f.label :department_id, :class => 'control-label' %>
+    <%= f.label :department, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :department_id, :class => 'form-control' %>
+      <%= select_tag("department_id", options_from_collection_for_select(@departments, "id", "name"), :class => 'form-control', :style => 'width:20%') %>
     </div>
-    <%= error_span(@doctor[:department_id]) %>
   </div>
-
-
+  <br>
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            doctors_path, :class => 'btn btn-default' %>
+            admin_index_path, :class => 'btn btn-default' %>
 
 <% end %>

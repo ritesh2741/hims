@@ -1,31 +1,24 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
 
-  # GET /doctors
-  # GET /doctors.json
   def index
     @doctors = Doctor.all
   end
 
-  # GET /doctors/1
-  # GET /doctors/1.json
   def show
   end
 
-  # GET /doctors/new
   def new
     @doctor = Doctor.new
+    @departments = Department.all
   end
 
-  # GET /doctors/1/edit
   def edit
   end
 
-  # POST /doctors
-  # POST /doctors.json
   def create
-    @doctor = Doctor.new(doctor_params)
-
+    modified_params = doctor_params.merge(department_id: params[:department_id])
+    @doctor = Doctor.new(modified_params)
     respond_to do |format|
       if @doctor.save
         format.html { redirect_to @doctor, notice: 'Doctor was successfully created.' }
@@ -37,8 +30,6 @@ class DoctorsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /doctors/1
-  # PATCH/PUT /doctors/1.json
   def update
     respond_to do |format|
       if @doctor.update(doctor_params)
@@ -51,8 +42,6 @@ class DoctorsController < ApplicationController
     end
   end
 
-  # DELETE /doctors/1
-  # DELETE /doctors/1.json
   def destroy
     @doctor.destroy
     respond_to do |format|
@@ -61,14 +50,17 @@ class DoctorsController < ApplicationController
     end
   end
 
+  def appointments
+    @doctor = Doctor.find(params[:doctor_id])
+    @appointments = @doctor.appointments
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_doctor
       @doctor = Doctor.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      params.require(:doctor).permit(:name, :description, :dob, :gender, :phone, :address)
+      params.require(:doctor).permit(:name, :description, :dob, :gender, :phone, :address, :department_id)
     end
 end

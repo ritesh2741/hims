@@ -18,49 +18,47 @@
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'form-control' %>
+      <%= f.text_field :name, :class => 'form-control',:style => 'width:20%' %>
     </div>
     <%= error_span(@patient[:name]) %>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :description, :class => 'form-control' %>
+      <%= f.text_field :description, :class => 'form-control',:style => 'width:20%' %>
     </div>
     <%= error_span(@patient[:description]) %>
   </div>
   <div class="control-group">
     <%= f.label :dob, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :dob, :class => 'form-control' %>
+      <%= f.text_field :dob, :class => 'form-control',:style => 'width:20%' %>
     </div>
     <%= error_span(@patient[:dob]) %>
   </div>
   <div class="control-group">
     <%= f.label :gender, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :gender, :class => 'form-control' %>
+      <%= f.text_field :gender, :class => 'form-control',:style => 'width:20%' %>
     </div>
     <%= error_span(@patient[:gender]) %>
   </div>
   <div class="control-group">
     <%= f.label :phone, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :phone, :class => 'form-control' %>
+      <%= f.text_field :phone, :class => 'form-control',:style => 'width:20%' %>
     </div>
     <%= error_span(@patient[:phone]) %>
   </div>
   <div class="control-group">
     <%= f.label :address, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :address, :class => 'form-control' %>
+      <%= f.text_field :address, :class => 'form-control',:style => 'width:20%' %>
     </div>
     <%= error_span(@patient[:address]) %>
   </div>
-
-
+  <br>
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            patients_path, :class => 'btn btn-default' %>
-
+            admin_index_path, :class => 'btn btn-default' %>
 <% end %>
