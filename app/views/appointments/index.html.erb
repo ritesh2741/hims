@@ -1,18 +1,11 @@
 <table class='table table-bordered'>
 	<tr>
-		<td>
-			<b>Patient Name
-		</td>
-		<td>
-			<b>Doctor Name
-		</td>
-		<td>
-			<b>Scheduled Date
-		</td>
-		<td>
-			<b>Room No
-		</td>
+		<td><b>Patient Name</td>
+		<td><b>Doctor Name</td>
+		<td><b>Scheduled Date</td>
+		<td><b>Room No</td>
 	</tr>
+
 	<% @appointments.each do |appointment| %>
 		<tr>
 			<td><%= appointment.patient.name%></td>
