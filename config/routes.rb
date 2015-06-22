@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   resources :admin, only: :index
-  resources :doctors
+  resources :doctors do
+    get 'appointment'
+  end
   resources :appointments
   resources :patients
 
