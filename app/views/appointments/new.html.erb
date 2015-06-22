@@ -1,0 +1,35 @@
+<%= form_for @appointment do |f|%>
+
+<h1> Add a New Appointment </h1>
+<div class="control-group">
+	<%= f.label :patient, :class => 'control-label' %>
+	<div class="controls">
+		<%= select_tag("patient_id", options_from_collection_for_select(@patient, "id", "name"), :class => 'form-control', :style => 'width:20%') %>
+	</div>
+</div>
+
+<div class="control-group">
+	<%= f.label :doctor, :class => 'control-label' %>
+	<div class="controls">
+		<%= select_tag("doctor_id", options_from_collection_for_select(@doctor, "id", "name"), :class => 'form-control', :style => 'width:20%') %>
+	</div>
+</div>
+
+<div class="control-group">
+    <%= f.label :schedule, :class => 'control-label' %>
+    <div class="controls">
+		<%= f.text_field :schedule, :class => 'form-control', :style => 'width:20%'%>
+    </div>
+    <%= error_span(@appointment[:schedule]) %>
+</div>
+
+<div class="control-group">
+    <%= f.label :room, :class => 'control-label' %>
+    <div class="controls">
+		<%= f.text_field :room, :class => 'form-control', :style => 'width:10%' %>
+    </div>
+    <%= error_span(@appointment[:room]) %>
+</div>
+<br>
+<%= f.submit'Create', :class => 'btn btn-success' %>
+<%end%>	

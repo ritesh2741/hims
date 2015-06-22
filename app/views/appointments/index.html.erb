@@ -1,8 +1,10 @@
-<h1> <%= 'Appointments For' + @doctor.name %></h1>
 <table class='table table-bordered'>
 	<tr>
 		<td>
 			Patient Name
+		</td>
+		<td>
+			Doctor Name
 		</td>
 		<td>
 			Scheduled Time
@@ -14,6 +16,7 @@
 	<% @appointments.each do |appointment| %>
 		<tr>
 			<td><%= appointment.patient.name%></td>
+			<td><%= appointment.doctor.name%></td>
 			<td><%= appointment.schedule%></td>
 			<td><%= appointment.room%></td>
 		</tr>
