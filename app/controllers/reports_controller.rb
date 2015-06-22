@@ -17,7 +17,7 @@ class ReportsController < ApplicationController
   end
 
   def create
-   
+
     @report = Report.new(report_params)
     @report.patient = @patient
 

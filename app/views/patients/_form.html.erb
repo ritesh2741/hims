@@ -57,10 +57,8 @@
     </div>
     <%= error_span(@patient[:address]) %>
   </div>
-
-
+  <br>
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            patients_path, :class => 'btn btn-default' %>
-
+            admin_index_path, :class => 'btn btn-default' %>
 <% end %>

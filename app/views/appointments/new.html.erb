@@ -32,4 +32,5 @@
 </div>
 <br>
 <%= f.submit'Create', :class => 'btn btn-success' %>
-<%end%>	
+<%= link_to t('.cancel', :default => t("helpers.links.cancel")),admin_index_path, :class => 'btn btn-default' %>
+<%end%>

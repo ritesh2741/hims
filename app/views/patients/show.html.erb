@@ -16,10 +16,10 @@
   <dd><%= @patient.phone %></dd>
   <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
   <dd><%= @patient.address %></dd>
-  
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              patients_path, :class => 'btn btn-default'  %>
-<%= link_to 'View Appointments', patient_appointments_path(params[:id]), :class => 'btn btn-default' %>
 
+<%= link_to 'View Appointments', patient_appointments_path(params[:id]), :class => 'btn btn-primary' %>
+<%= link_to 'Add Reports', new_patient_report_path(params[:id]), :class => 'btn btn-success' %>
+<%= link_to 'View Reports', patient_reports_path(params[:id]), :class => 'btn btn-info' %>
+<%= link_to t('.back', :default => t("helpers.links.back")),patients_path, :class => 'btn btn-default'  %>

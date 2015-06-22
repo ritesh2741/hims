@@ -1,11 +1,9 @@
 <%- model_class = Doctor -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%=t '.title', :default => 'Dr. ' + @doctor.name %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @doctor.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @doctor.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:dob) %>:</strong></dt>
@@ -19,7 +17,6 @@
   <dt><strong><%= model_class.human_attribute_name(:department) %>:</strong></dt>
   <dd><%= @doctor.department.name %></dd>
 </dl>
-
+<%= link_to 'View Appointments', doctor_appointments_path(params[:id]), :class => 'btn btn-primary' %>
 <%= link_to t('.back', :default => t("helpers.links.back")),
               doctors_path, :class => 'btn btn-default'  %>
-<%= link_to 'View Appointments', doctor_appointments_path(params[:id]), :class => 'btn btn-default' %>

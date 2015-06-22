@@ -24,10 +24,10 @@
         <td><%= doctor.gender %></td>
         <td><%= doctor.phone %></td>
         <td><%= doctor.address %></td>
-        <td><%= doctor.department_id %></td>
+        <td><%= doctor.department.name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_doctor_path(doctor), :class => 'btn btn-default btn-xs' %>
+                      edit_doctor_path(doctor), :class => 'btn btn-primary btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       doctor_path(doctor),
                       :method => :delete,
@@ -38,7 +38,4 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_doctor_path,
-            :class => 'btn btn-primary' %>
+<%= link_to t('.back', :default => t("helpers.links.back")),admin_index_path, :class => 'btn btn-default'  %>
