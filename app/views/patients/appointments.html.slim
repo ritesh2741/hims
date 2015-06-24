@@ -1,0 +1,13 @@
+table.table.table-bordered
+  tr
+    td
+      b Doctor Name
+    td
+      b Scheduled Date
+    td
+      b Room No
+  - @appointments.each do |appointment|
+    tr
+      td= appointment.doctor.name
+      td= appointment.schedule
+      td= appointment.room

@@ -1,0 +1,48 @@
+= form_for @doctor, :html => { :class => "form-horizontal doctor" } do |f|
+  - if @doctor.errors.any?
+    #error_expl.panel.panel-danger
+      .panel-heading
+        h3.panel-title
+          = pluralize(@doctor.errors.count, "error")
+          | prohibited this doctor from being saved:
+      .panel-body
+        ul
+          - @doctor.errors.full_messages.each do |msg|
+            li= msg
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'form-control', :style => 'width: 20%'
+    = error_span(@doctor[:name])
+  .control-group
+    = f.label :description, :class => 'control-label'
+    .controls
+      = f.text_field :description, :class => 'form-control', :style => 'width: 20%'
+    = error_span(@doctor[:description])
+  .control-group
+    = f.label :dob, :class => 'control-label'
+    .controls
+      = f.text_field :dob, :class => 'form-control', :style => 'width: 20%'
+    = error_span(@doctor[:dob])
+  .control-group
+    = f.label :gender, :class => 'control-label'
+    .controls
+      = f.text_field :gender, :class => 'form-control', :style => 'width: 20%'
+    = error_span(@doctor[:gender])
+  .control-group
+    = f.label :phone, :class => 'control-label'
+    .controls
+      = f.text_field :phone, :class => 'form-control', :style => 'width: 20%'
+    = error_span(@doctor[:phone])
+  .control-group
+    = f.label :address, :class => 'control-label'
+    .controls
+      = f.text_field :address, :class => 'form-control', :style => 'width: 20%'
+    = error_span(@doctor[:address])
+  .control-group
+    = f.label :department, :class => 'control-label'
+    .controls
+      = select_tag("department_id", options_from_collection_for_select(@departments, "id", "name"), :class => 'form-control', :style => 'width:20%')
+  br/
+  = f.submit nil, :class => 'btn btn-primary'
+  = link_to 'Cancel', admin_index_path, :class => 'btn btn-default'

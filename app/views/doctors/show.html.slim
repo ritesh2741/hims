@@ -1,0 +1,36 @@
+- model_class = Doctor
+.page-header
+  h1= t '.title', :default => 'Dr. ' + @doctor.name
+dl.dl-horizontal
+  dt
+    strong
+      = model_class.human_attribute_name(:description)
+      | :
+  dd= @doctor.description
+  dt
+    strong
+      = model_class.human_attribute_name(:dob)
+      | :
+  dd= @doctor.dob
+  dt
+    strong
+      = model_class.human_attribute_name(:gender)
+      | :
+  dd= @doctor.gender
+  dt
+    strong
+      = model_class.human_attribute_name(:phone)
+      | :
+  dd= @doctor.phone
+  dt
+    strong
+      = model_class.human_attribute_name(:address)
+      | :
+  dd= @doctor.address
+  dt
+    strong
+      = model_class.human_attribute_name(:department)
+      | :
+  dd= @doctor.department.name
+= link_to 'View Appointments', doctor_appointments_path(params[:id]), :class => 'btn btn-primary'
+= link_to 'Back', doctors_path, :class => 'btn btn-default'

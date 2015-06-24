@@ -1,0 +1,19 @@
+table.table.table-bordered
+  tr
+    td
+      b Patient Name
+    td
+      b Doctor Name
+    td
+      b Scheduled Date
+    td
+      b Room No
+  - @appointments.each do |appointment|
+    tr
+      - binding.pry
+      td= appointment.patient.name
+      td= appointment.doctor.name
+      td= appointment.schedule
+      td= appointment.room
+
+= link_to 'Back',admin_index_path, :class => 'btn btn-default'
