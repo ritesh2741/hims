@@ -1,0 +1,29 @@
+= form_for ([@patient, @report]), :html => { :class => "form-horizontal report" } do |f|
+  - if @report.errors.any?
+    #error_expl.panel.panel-danger
+      .panel-heading
+        h3.panel-title
+          = pluralize(@report.errors.count, "error")
+          | prohibited this report from being saved:
+      .panel-body
+        ul
+          - @report.errors.full_messages.each do |msg|
+            li= msg
+  .control-group
+    = f.label :title, :class => 'control-label'
+    .controls
+      = f.text_field :title, :class => 'form-control', :style => 'width:20%'
+    = error_span(@report[:title])
+  .control-group
+    = f.label :detail, :class => 'control-label'
+    .controls
+      = f.text_field :detail, :class => 'form-control', :style => 'width:20%'
+    = error_span(@report[:detail])
+  .control-group
+    = f.label :prescription, :class => 'control-label'
+    .controls
+      = f.text_field :prescription, :class => 'form-control', :style => 'width:20%'
+    = error_span(@report[:prescription])
+  br/
+  = f.submit nil, :class => 'btn btn-primary'
+  = link_to 'Cancel', patient_reports_path, :class => 'btn btn-default'

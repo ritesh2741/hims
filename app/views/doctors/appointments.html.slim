@@ -1,0 +1,14 @@
+h1 Appointments for Dr.#{@doctor.name}
+table.table.table-bordered
+  tr
+    td
+      b Patient Name
+    td
+      b Scheduled Date
+    td
+      b Room No
+  - @appointments.each do |appointment|
+    tr
+      td= appointment.patient.name
+      td= appointment.schedule
+      td= appointment.room

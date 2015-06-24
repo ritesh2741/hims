@@ -1,0 +1,31 @@
+- model_class = Report
+.page-header
+  h1= t '.title', :default => model_class.model_name.human.titleize
+dl.dl-horizontal
+  dt
+    strong
+      = model_class.human_attribute_name(:detail)
+      | :
+  dd= @report.detail
+  dt
+    strong
+      = model_class.human_attribute_name(:prescription)
+      | :
+  dd= @report.prescription
+  dt
+    strong
+      = model_class.human_attribute_name(:patient_id)
+      | :
+  dd= @report.patient_id
+  dt
+    strong
+      = model_class.human_attribute_name(:doctor_id)
+      | :
+  dd= @report.doctor_id
+  dt
+    strong
+      = model_class.human_attribute_name(:title)
+      | :
+  dd= @report.title
+= link_to t('.back', :default => t("helpers.links.back")), patient_reports_path, :class => 'btn btn-default'
+= link_to 'Delete', patient_report_path(@report), :method => :delete, :class => 'btn btn-danger btn-xs', :data => :confirm => 'Are You Sure?'

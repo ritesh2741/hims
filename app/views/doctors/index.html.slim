@@ -1,0 +1,28 @@
+- model_class = Doctor
+.page-header
+  h1= t '.title', :default => model_class.model_name.human.pluralize.titleize
+table.table.table-striped
+  thead
+    tr
+      th= model_class.human_attribute_name(:name)
+      th= model_class.human_attribute_name(:description)
+      th= model_class.human_attribute_name(:dob)
+      th= model_class.human_attribute_name(:gender)
+      th= model_class.human_attribute_name(:phone)
+      th= model_class.human_attribute_name(:address)
+      th= model_class.human_attribute_name(:department_id)
+      th= t '.actions', :default => t("helpers.actions")
+  tbody
+    - @doctors.each do |doctor|
+      tr
+        td= link_to doctor.name, doctor_path(doctor)
+        td= doctor.description
+        td= doctor.dob
+        td= doctor.gender
+        td= doctor.phone
+        td= doctor.address
+        td= doctor.department.name
+        td
+          = link_to 'Edit', edit_doctor_path(doctor), :class => 'btn btn-primary btn-xs'
+          = link_to 'Delete', doctor_path(doctor), :method => :delete, :class => 'btn btn-danger btn-xs', :data => {:confirm => 'Are You Sure?'}
+= link_to 'Back',admin_index_path, :class => 'btn btn-default'
