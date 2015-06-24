@@ -1,9 +1,13 @@
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+-patient_name = raw @patient.map(&:name)
+
 = form_for @appointment do |f|
   h1 Add a New Appointment
   .control-group
     = f.label :patient, :class => 'control-label'
     .controls
-      = select_tag("patient_id", options_from_collection_for_select(@patient, "id", "name"), :class => 'form-control', :style => 'width:20%')
+      = f.text_field :patient, :id => 'patient', :class => 'form-control', :style => 'width:20%', :value => ''
   .control-group
     = f.label :doctor, :class => 'control-label'
     .controls
@@ -19,5 +23,12 @@
       = f.text_field :room, :class => 'form-control', :style => 'width:10%'
     = error_span(@appointment[:room])
   br/
-  = f.submit'Create', :class => 'btn btn-success'
+  = f.submit'Create', :class => 'btn btn-success', :id =>'create'
   = link_to 'Cancel',admin_index_path, :class => 'btn btn-default'
+
+javascript:
+  $(function() {
+        var patient_name = #{patient_name}
+        $('#patient').autocomplete({source: patient_name});
+      });
+
