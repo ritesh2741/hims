@@ -1,7 +1,7 @@
-<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
-<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
 -patient_name = raw @patient.map(&:name)
-
+= javascript_include_tag 'auto_complete'
+= javascript_include_tag 'http://code.jquery.com/ui/1.10.2/jquery-ui.js'
+= stylesheet_link_tag 'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css'
 = form_for @appointment do |f|
   h1 Add a New Appointment
   .control-group
@@ -27,8 +27,6 @@
   = link_to 'Cancel',admin_index_path, :class => 'btn btn-default'
 
 javascript:
-  $(function() {
-        var patient_name = #{patient_name}
-        $('#patient').autocomplete({source: patient_name});
-      });
+  var patient_name = #{patient_name};
+  auto_list(patient_name);
 
