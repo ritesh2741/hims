@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+	load_and_authorize_resource
 	def index
 		@appointments = Appointment.all
 	end
