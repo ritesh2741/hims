@@ -10,18 +10,21 @@ table.table.table-striped
       th= model_class.human_attribute_name(:gender)
       th= model_class.human_attribute_name(:phone)
       th= model_class.human_attribute_name(:address)
-      th= t '.actions', :default => t("helpers.actions")
-  tbody
-    - @patients.each do |patient|
-      tr
-        td= link_to patient.name, patient_path(patient)
-        td= patient.description
-        td= patient.dob
-        td= patient.gender
-        td= patient.phone
-        td= patient.address
-        td
-          = link_to 'Edit',edit_patient_path(patient), :class => 'btn btn-primary btn-xs'
-          = link_to 'Delete', patient_path(patient), :method => :delete, :class => 'btn btn-danger btn-xs', :data =>{:confirm => 'Are You Sure?'}
+      -if can? :update || :destroy , Patient 
+        th= t '.actions', :default => t("helpers.actions")
+    tbody
+      - @patients.each do |patient|
+        tr
+          td= link_to patient.name, patient_path(patient)
+          td= patient.description
+          td= patient.dob
+          td= patient.gender
+          td= patient.phone
+          td= patient.address
+          td
+            -if can? :update, Patient
+              = link_to 'Edit',edit_patient_path(patient), :class => 'btn btn-primary btn-xs'
+            -if can? :destroy, Patient
+              = link_to 'Delete', patient_path(patient), :method => :delete, :class => 'btn btn-danger btn-xs', :data =>{:confirm => 'Are You Sure?'}
 = link_to 'Back',admin_index_path, :class => 'btn btn-default'
 
