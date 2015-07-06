@@ -14,6 +14,7 @@ class DoctorsController < ApplicationController
   end
 
   def edit
+    @departments = Department.all
   end
 
   def create
@@ -31,6 +32,7 @@ class DoctorsController < ApplicationController
   end
 
   def update
+    @departments = Department.all
     respond_to do |format|
       if @doctor.update(doctor_params)
         format.html { redirect_to @doctor, notice: 'Doctor was successfully updated.' }
