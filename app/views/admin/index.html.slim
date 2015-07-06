@@ -1,13 +1,24 @@
-h1 WELCOME TO THE HOSPITAL INFORMATION MANAGEMENT SYSTEM
-div
-  h1 Doctors
-  = link_to "Doctors List", doctors_path , class: 'btn btn-primary'
-  = link_to "Add a Doctor", new_doctor_path, class: 'btn btn-primary'
-div
-  h1 Patient
-  = link_to "Patients List", patients_path , class: 'btn btn-primary'
-  = link_to "Add a Patient", new_patient_path, class: 'btn btn-primary'
-h1 Appointment Section
-div
-  = link_to "Add an appointment", new_appointment_path, class: 'btn btn-primary'
-  = link_to "List all appointments", appointments_path, class: 'btn btn-primary'
+nav.navbar.navbar-default
+    div.container-fluid
+      ul.nav.navbar-nav
+        li.active
+          =link_to 'Home',admin_index_path
+        li
+          =link_to'List Appointments',appointments_path
+        li
+          =link_to'List Doctors',doctors_path
+        li
+          =link_to'List Patients',patients_path
+div.container
+  div.doctor
+    h2 Doctors
+    = link_to "Doctors List", doctors_path , class: 'btn btn-primary'
+    = link_to "Add a Doctor", new_doctor_path, class: 'btn btn-primary'
+  div.patient
+    h2 Patient
+    = link_to "Patients List", patients_path , class: 'btn btn-primary'
+    = link_to "Add a Patient", new_patient_path, class: 'btn btn-primary'
+  h2 Appointment Section
+  div.appointment
+    = link_to "Add an appointment", new_appointment_path, class: 'btn btn-primary'
+    = link_to "List all appointments", appointments_path, class: 'btn btn-primary'
