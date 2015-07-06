@@ -1,4 +1,5 @@
 class DoctorsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -14,6 +15,7 @@ class DoctorsController < ApplicationController
   end
 
   def edit
+    @departments = Department.all
   end
 
   def create

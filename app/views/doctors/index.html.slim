@@ -11,7 +11,8 @@ table.table.table-striped
       th= model_class.human_attribute_name(:phone)
       th= model_class.human_attribute_name(:address)
       th= model_class.human_attribute_name(:department_id)
-      th= t '.actions', :default => t("helpers.actions")
+      -if can? :update || :destroy, Doctor
+        th= t '.actions', :default => t("helpers.actions")
   tbody
     - @doctors.each do |doctor|
       tr
@@ -23,6 +24,9 @@ table.table.table-striped
         td= doctor.address
         td= doctor.department.name
         td
-          = link_to 'Edit', edit_doctor_path(doctor), :class => 'btn btn-primary btn-xs'
-          = link_to 'Delete', doctor_path(doctor), :method => :delete, :class => 'btn btn-danger btn-xs', :data => {:confirm => 'Are You Sure?'}
+          -if can? :update, Doctor
+            = link_to 'Edit', edit_doctor_path(doctor), :class => 'btn btn-primary btn-xs'
+          -binding.pry
+          -if can? :destroy, Doctor
+            = link_to 'Delete', doctor_path(doctor), :method => :delete, :class => 'btn btn-danger btn-xs', :data => {:confirm => 'Are You Sure?'}
 = link_to 'Back',admin_index_path, :class => 'btn btn-default'

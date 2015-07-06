@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create(email: 'superadmin@hims.com',password: 'shrestha',password_confirmation:'shrestha', role:'superadmin')
+User.create(email: 'admin@hims.com',password: 'shrestha',password_confirmation:'shrestha', role: 'admin')
+User.create(email: 'user@hims.com',password: 'shrestha',password_confirmation:'shrestha', role: 'user')
+
 departments = ['Orthology','Psychology','Gynaecology','General']
 departments.each do|dept|
 	Department.create(name: dept)

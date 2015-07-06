@@ -10,15 +10,12 @@ nav.navbar.navbar-default
         li
           =link_to'List Patients',patients_path
 div.container
-  div.doctor
-    h2 Doctors
-    = link_to "Doctors List", doctors_path , class: 'btn btn-primary'
-    = link_to "Add a Doctor", new_doctor_path, class: 'btn btn-primary'
-  div.patient
-    h2 Patient
-    = link_to "Patients List", patients_path , class: 'btn btn-primary'
-    = link_to "Add a Patient", new_patient_path, class: 'btn btn-primary'
-  h2 Appointment Section
-  div.appointment
-    = link_to "Add an appointment", new_appointment_path, class: 'btn btn-primary'
-    = link_to "List all appointments", appointments_path, class: 'btn btn-primary'
+  -if can? :manage, :all 
+    h1 ADMIN PANEL
+    div.col-xs-2
+      = link_to "Add a Doctor", new_doctor_path, class: 'btn btn-primary'
+    div.col-xs-2 
+      = link_to "Add a Patient", new_patient_path, class: 'btn btn-primary'
+    div.col-xs-2
+      = link_to "Add an appointment", new_appointment_path, class: 'btn btn-primary'
+      
