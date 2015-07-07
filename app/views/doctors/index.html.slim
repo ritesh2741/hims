@@ -26,7 +26,6 @@ table.table.table-striped
         td
           -if can? :update, Doctor
             = link_to 'Edit', edit_doctor_path(doctor), :class => 'btn btn-primary btn-xs'
-          -binding.pry
           -if can? :destroy, Doctor
             = link_to 'Delete', doctor_path(doctor), :method => :delete, :class => 'btn btn-danger btn-xs', :data => {:confirm => 'Are You Sure?'}
 = link_to 'Back',admin_index_path, :class => 'btn btn-default'
