@@ -12,7 +12,7 @@ table.table.table-bordered
       b Status
     -if current_user.role == 'superadmin'
       td
-        b Ready for Approval
+        b Approval/Rejection
   - @appointments.each do |appointment|
     tr
       td= appointment.patient.name
@@ -21,6 +21,9 @@ table.table.table-bordered
       td= appointment.room
       td= appointment.status
       -if current_user.role == 'superadmin'
-        td= link_to 'Approve',appointment_approve_path(appointment.id)
+        td
+          = link_to 'Approve',appointment_apprej_path(appointment.id, identifier: 'approve')
+          | /
+          = link_to ' Reject',appointment_apprej_path(appointment.id, identifier: 'reject')
 
 = link_to 'Back',admin_index_path, :class => 'btn btn-default'
