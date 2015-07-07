@@ -7,15 +7,22 @@
   .control-group
     = f.label :patient, :class => 'control-label'
     .controls
-      = f.text_field :patient, :id => 'patient', :class => 'form-control', :style => 'width:20%', :required => ''
+			select.selectpicker data-live-search="true"
+			  -@patient.each do |pt|
+			  	<option vaule='patient_name' id= #{pt.id}> #{pt.name}
+			| Patient Not in list?
+			a href="../patients/new"  Click Here
+			| to add new patient
   .control-group
     = f.label :doctor, :class => 'control-label'
     .controls
-      = select_tag("doctor_id", options_from_collection_for_select(@doctor, "id", "name"), :class => 'form-control', :style => 'width:20%')
+      select.selectpicker data-live-search="true"
+			  -@doctor.each do |doc|
+			  	<option vaule='doctor_name' id= #{doc.id}> #{doc.name}
   .control-group
     = f.label :schedule, :class => 'control-label'
     .controls
-      = f.text_field :schedule, :class => 'form-control', :style => 'width:20%'
+      = f.text_field :schedule, :class => 'form-control', :style => 'width:20%', :type => 'date'
     = error_span(@appointment[:schedule])
   .control-group
     = f.label :room, :class => 'control-label'
@@ -25,8 +32,5 @@
   br/
   = f.submit'Create', :class => 'btn btn-success', :id =>'create'
   = link_to 'Cancel',admin_index_path, :class => 'btn btn-default'
-
 javascript:
-  var patient_name = #{patient_name};
-  auto_list(patient_name);
-
+ $('selectpicker').selectpicker();
