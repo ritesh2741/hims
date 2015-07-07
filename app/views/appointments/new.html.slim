@@ -1,5 +1,3 @@
--patient_name = raw @patient.map(&:name)
-= javascript_include_tag 'auto_complete'
 = javascript_include_tag 'http://code.jquery.com/ui/1.10.2/jquery-ui.js'
 = stylesheet_link_tag 'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css'
 = form_for @appointment do |f|
@@ -7,18 +5,14 @@
   .control-group
     = f.label :patient, :class => 'control-label'
     .controls
-			select.selectpicker data-live-search="true"
-			  -@patient.each do |pt|
-			  	<option vaule='patient_name' id= #{pt.id}> #{pt.name}
+      = select_tag :patient_id, options_for_select(@patients.map {|p| [p.name, p.id]}), class: 'selectpicker', data: {"live-search" => true}
 			| Patient Not in list?
 			a href="../patients/new"  Click Here
 			| to add new patient
   .control-group
     = f.label :doctor, :class => 'control-label'
     .controls
-      select.selectpicker data-live-search="true"
-			  -@doctor.each do |doc|
-			  	<option vaule='doctor_name' id= #{doc.id}> #{doc.name}
+      = select_tag :doctor_id, options_for_select(@doctors.map {|p| [p.name, p.id]}),class: 'selectpicker', data: {"live-search" => true}
   .control-group
     = f.label :schedule, :class => 'control-label'
     .controls
@@ -33,4 +27,6 @@
   = f.submit'Create', :class => 'btn btn-success', :id =>'create'
   = link_to 'Cancel',admin_index_path, :class => 'btn btn-default'
 javascript:
- $('selectpicker').selectpicker();
+ $(document).ready(function(){
+   $('.selectpicker').selectpicker();
+ })
