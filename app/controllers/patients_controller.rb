@@ -57,8 +57,8 @@ class PatientsController < ApplicationController
 
   def send_message()
     patient_id =  params[:patient_id]
-    SendMessage.perform_in(5.seconds,patient_id)
-     respond_to do |format|
+    SendMessage.perform_in(1.seconds,patient_id)
+    respond_to do |format|
       format.html { redirect_to patient_path(patient_id), notice: 'Message Sending' }
       format.json { head :no_content }
     end

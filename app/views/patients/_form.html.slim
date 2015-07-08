@@ -39,6 +39,11 @@
     .controls
       = f.text_field :address, :class => 'form-control',:style => 'width:20%'
     = error_span(@patient[:address])
+    .control-group
+    = f.label :email_id, :class => 'control-label'
+    .controls
+      = f.text_field :email_id, :class => 'form-control',:style => 'width:20%'
+    = error_span(@patient[:email_id])
   br/
   = f.submit nil, :class => 'btn btn-primary'
   = link_to 'Cancel', admin_index_path, :class => 'btn btn-default'
