@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'appointments'
   end
   resources :appointments do
-    get :approve
+    get :apprej
   end
   resources :patients do
     get 'appointments'
