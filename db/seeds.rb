@@ -27,7 +27,12 @@ patients = [
 	{ name: 'Tony Hawk', description: 'Fracture Skull', dob: Date.parse('12/05/1951'), gender: 'Male', phone: 9841123456,address: 'Nepal',email_id: 'tony@test.com'},
 	{ name: 'Brett Lee', description: 'Stomach Problem', dob: Date.parse('1/12/1950'), gender: 'Male', phone: 9841098456, address: 'India',email_id:'brett@test.com'},
 	{ name: 'John', description: 'Headache', dob: Date.parse('1/2/1960'), gender: 'Male', phone: 9841126812, address: 'China',email_id:'john@test.com' },
-	{ name: 'Ravindra', description: 'Mental Patient', dob: Date.parse('10/2/1956'), gender: 'Male', phone: 9841790456, address: 'Japan',email_id:'ravindra@test.com' }
+	{ name: 'Ravindra', description: 'Mental Patient', dob: Date.parse('10/2/1956'), gender: 'Male', phone: 9841790456, address: 'Japan',email_id:'ravindra@test.com' },
+	{ name: 'Ritesh',description:'Test', dob: Date.parse('19/2/1991'), gender: 'Male', phone: 9841433181, address: 'Nepal',email_id:'ritesh@whitehatengineering.com'}
 ]
 Patient.create(patients)
-
+appointments = [
+	{schedule: '11/10/2016', room: 5, created_at: nil, updated_at: nil, patient_id: 5, doctor_id: 2, status: 'Approved'},
+	{schedule: '10/10/2016', room: 5, created_at: nil, updated_at: nil, patient_id: 5, doctor_id: 2, status: 'Pending'}
+]
+Appointment.create(appointments)
