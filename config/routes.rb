@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources :patients do
     get 'appointments'
+    get 'send_message'
     resources :reports
   end
 
