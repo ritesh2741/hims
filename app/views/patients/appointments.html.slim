@@ -12,4 +12,7 @@ table.table.table-bordered
       td= appointment.schedule
       td= appointment.room
 
-= link_to 'Send Appointment', patient_send_message_path(params[:patient_id]), :class => 'btn btn-primary'
+= link_to 'Send Appointment', patient_send_message_path(params[:patient_id], path: params[:path]), :class => 'btn btn-primary'
+= form_tag patient_upload_attachment_path(params[:patient_id]) , id: 'upload_file' , multipart: true
+  = file_field 'upload','datafile', :class =>'btn btn-danger'
+  = submit_tag 'Upload Attachment', :class => 'btn btn-primary', :id => 'upload_attachment'
