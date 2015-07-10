@@ -10,15 +10,13 @@ Rails.application.routes.draw do
     get :appointments
   end
   resources :appointments do
-    get :apprej
-
+    get :approve_or_reject
   end
   resources :patients do
     post :upload_attachment
     get :appointments
     get :send_message
     resources :reports
-
   end
 
   # Example of regular route:

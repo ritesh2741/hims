@@ -2,16 +2,16 @@
 class SendMessage
   include Sidekiq::Worker
 
-  def perform(patient_id,attachment_path)
+  def perform(patient_id, attachment_path)
     appointment = Appointment.where(patient_id: patient_id, status: 'Approved')
     filter_appointment =  appointment.map { |app| { 'Schedule' => app['schedule'], 'Room' => app['room'] } }
     recepient_email = Patient.find(patient_id).email_id
-    email = SendMessage.prepare_email(recepient_email, filter_appointment,attachment_path)
+    email = SendMessage.prepare_email(recepient_email, filter_appointment, attachment_path)
     email.deliver!
-    File.delete(attachment_path) unless attachment_path == ''
+    File.delete(attachment_path) unless attachment_path.empty?
   end
 
-  def self.prepare_email(recepient_email, filter_appointment,attachment_path)
+  def self.prepare_email(recepient_email, filter_appointment, attachment_path)
     Mail.defaults do
       delivery_method :smtp, Rails.configuration.action_mailer.smtp_settings
     end
@@ -21,9 +21,7 @@ class SendMessage
       subject 'Appointment Schedule'
       body filter_appointment
     end
-      mail.add_file(attachment_path) unless attachment_path == ''
+    mail.add_file(attachment_path) unless attachment_path.empty?
     mail
   end
 end
-
-

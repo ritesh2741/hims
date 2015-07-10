@@ -22,8 +22,8 @@ table.table.table-bordered
       td= appointment.status
       -if current_user.role == 'superadmin'
         td
-          = link_to 'Approve',appointment_apprej_path(appointment.id, identifier: 'approve')
+          = link_to 'Approve',appointment_approve_or_reject_path(appointment.id, identifier: 'approve')
           | /
-          = link_to ' Reject',appointment_apprej_path(appointment.id, identifier: 'reject')
+          = link_to ' Reject',appointment_approve_or_reject_path(appointment.id, identifier: 'reject')
 
-= link_to 'Back',admin_index_path, :class => 'btn btn-default'
+= link_to 'Back',admin_index_path, class: 'btn btn-default'

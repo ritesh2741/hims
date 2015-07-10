@@ -1,11 +1,13 @@
 class Appointment < ActiveRecord::Base
-	belongs_to :doctor
-	belongs_to :patient
+  belongs_to :doctor
+  belongs_to :patient
+  validates_presence_of :doctor
+  validates_presence_of :patient
 
   def bookable?
     doctor_id = self.doctor_id
     schedule = self.schedule
-    appointment_count = Appointment.where(doctor_id: doctor_id, status:'Approved', schedule: schedule ).count
+    appointment_count = Appointment.where(doctor_id: doctor_id, status: 'Approved', schedule: schedule).count
     if appointment_count < 4
       return false
     else
@@ -13,22 +15,20 @@ class Appointment < ActiveRecord::Base
     end
   end
 
-  def self.check_role(role,appointment)
+  def self.check_role(role, appointment)
     if role == 'admin'
-        appointment.status = 'Pending'
-        appointment.save!
+      appointment.status = 'Pending'
+      appointment.save!
     elsif role == 'superadmin'
-        appointment.status = 'Approved'
-        appointment.save!
+      appointment.status = 'Approved'
+      appointment.save!
     end
   end
 
   def self.remove_appointments(appointments)
-    appts = appointments.map{|x| {'schedule' => x['schedule'], 'id' => x['id']}}
+    appts = appointments.map { |x| { 'schedule' => x['schedule'], 'id' => x['id'] } }
     appts.each do |a|
-      if Date.today > a['schedule']
-        Appointment.delete(a.id)
-      end
+      Appointment.delete(a.id) if Date.today > a['schedule']
     end
   end
 end
