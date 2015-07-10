@@ -3,6 +3,7 @@ class AppointmentsController < ApplicationController
   load_and_authorize_resource
   def index
     @appointments = Appointment.all
+    Appointment.remove_appointments(@appointments)
   end
 
   def new
@@ -12,10 +13,10 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    modified_params = appointment_params.merge(doctor_id: params[:doctor_id], patient_id: params[:patient_id])
+    modified_params = appointment_params.merge(doctor_id: params[:doctor_id], patient_id: params[:patient_id], schedule: params[:schedule ])
     @appointment = Appointment.new(modified_params)
-    if Appointment.overload(@appointment.doctor_id, @appointment.schedule)
-      redirect_to admin_index_path, notice: 'Appointment Overloaded'
+    if Appointment.overload(@appointment)
+      redirect_to admin_index_path, alert: 'Sorry,all 4 appointments for today have been booked for this doctor in this date'
     else
       respond_to do |format|
         if @appointment.save
@@ -46,6 +47,6 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:schedule, :room)
+    params.require(:appointment).permit(:room)
   end
 end

@@ -11,8 +11,13 @@ table.table.table-bordered
       td= appointment.doctor.name
       td= appointment.schedule
       td= appointment.room
+-if @appointments !=[] || params[:path]
+  div.container
+    div.col-xs-2
+      = link_to 'Send Appointment as Email', patient_send_message_path(params[:patient_id], path: params[:path]), :class => 'btn btn-success'
+br
 
-= link_to 'Send Appointment', patient_send_message_path(params[:patient_id], path: params[:path]), :class => 'btn btn-primary'
+| Need to Attach some files ??
 = form_tag patient_upload_attachment_path(params[:patient_id]) , id: 'upload_file' , multipart: true
-  = file_field 'upload','datafile', :class =>'btn btn-danger'
-  = submit_tag 'Upload Attachment', :class => 'btn btn-primary', :id => 'upload_attachment'
+  = file_field 'upload','datafile', :class =>'btn btn-default'
+  = submit_tag 'Upload Attachment', :class => 'btn btn-info', :id => 'upload_attachment'

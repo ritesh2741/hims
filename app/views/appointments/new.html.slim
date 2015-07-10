@@ -1,14 +1,13 @@
-= javascript_include_tag 'http://code.jquery.com/ui/1.10.2/jquery-ui.js'
-= stylesheet_link_tag 'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css'
 = form_for @appointment do |f|
   h1 Add a New Appointment
   .control-group
     = f.label :patient, :class => 'control-label'
     .controls
       = select_tag :patient_id, options_for_select(@patients.map {|p| [p.name, p.id]}), class: 'selectpicker', data: {"live-search" => true}
-			| Patient Not in list?
-			a href="../patients/new"  Click Here
-			| to add new patient
+  		|
+      |Patient Not in list?
+   	  a href="../patients/new"  Click Here
+  	  |  to add new patient
   .control-group
     = f.label :doctor, :class => 'control-label'
     .controls
@@ -16,17 +15,20 @@
   .control-group
     = f.label :schedule, :class => 'control-label'
     .controls
-      = f.text_field :schedule, :class => 'form-control', :style => 'width:20%', :type => 'date'
+      = f.text_field :schedule, :class => 'form-control', :style => 'width:20%', :type => 'date', :name => 'schedule', :required => '', :max => Date.today + 10.days
     = error_span(@appointment[:schedule])
   .control-group
     = f.label :room, :class => 'control-label'
     .controls
-      = f.text_field :room, :class => 'form-control', :style => 'width:10%'
+      = f.text_field :room, :class => 'form-control', :style => 'width:10%',:required => ''
     = error_span(@appointment[:room])
   br/
   = f.submit'Create', :class => 'btn btn-success', :id =>'create'
   = link_to 'Cancel',admin_index_path, :class => 'btn btn-default'
+
 javascript:
- $(document).ready(function(){
-   $('.selectpicker').selectpicker();
- })
+  $(document).ready(function(){
+    $('.selectpicker').selectpicker();
+  })
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementsByName("schedule")[0].setAttribute('min', today);

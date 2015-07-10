@@ -12,5 +12,5 @@ table.table.table-bordered
       td= appointment.patient.name
       td= appointment.schedule
       td= appointment.room
+= link_to 'Back', doctor_path(params[:doctor_id]), :class => 'btn btn-default'
 
-= link_to 'Send Appointment', patient_send_message_path(params[:id]), :class => 'btn btn-primary'
