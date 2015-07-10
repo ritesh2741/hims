@@ -25,10 +25,3 @@
   br/
   = f.submit'Create', :class => 'btn btn-success', :id =>'create'
   = link_to 'Cancel',admin_index_path, :class => 'btn btn-default'
-
-javascript:
-  $(document).ready(function(){
-    $('.selectpicker').selectpicker();
-  })
-  var today = new Date().toISOString().split('T')[0];
-  document.getElementsByName("schedule")[0].setAttribute('min', today);
