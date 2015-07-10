@@ -1,9 +1,8 @@
 # For Background Jobs
 class SendMessage
   include Sidekiq::Worker
-  sidekiq_options :queue => :crawler, :retry => false, :backtrace => true
 
-  def self.perform(patient_id,attachment_path)
+  def perform(patient_id,attachment_path)
     appointment = Appointment.where(patient_id: patient_id, status: 'Approved')
     filter_appointment =  appointment.map { |app| { 'Schedule' => app['schedule'], 'Room' => app['room'] } }
     recepient_email = Patient.find(patient_id).email_id

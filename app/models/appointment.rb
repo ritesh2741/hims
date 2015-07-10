@@ -2,9 +2,9 @@ class Appointment < ActiveRecord::Base
 	belongs_to :doctor
 	belongs_to :patient
 
-  def self.overload(appointment)
-    doctor_id = appointment.doctor_id
-    schedule = appointment.schedule
+  def bookable?
+    doctor_id = self.doctor_id
+    schedule = self.schedule
     appointment_count = Appointment.where(doctor_id: doctor_id, status:'Approved', schedule: schedule ).count
     if appointment_count < 4
       return false
