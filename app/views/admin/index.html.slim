@@ -11,11 +11,13 @@ nav.navbar.navbar-default
           =link_to'List Patients',patients_path
 div.container
   -if can? :manage, Doctor
-    div.col-xs-2
+    div.col-sm-4.text-center
       = link_to "Add a Doctor", new_doctor_path, class: 'btn btn-primary'
-  -if can? :manage, Patient
-    div.col-xs-2
+      img height="300" src="assets/doctor.gif" width="300"
+    div.col-sm-4.text-center
       = link_to "Add a Patient", new_patient_path, class: 'btn btn-primary'
+      img height="300" src="assets/patient.gif" width="300"
   -if can? :manage, Appointment
-    div.col-xs-2
+    div.col-sm-4.text-center
       = link_to "Add an appointment", new_appointment_path, class: 'btn btn-primary'
+      img height="300" src="assets/appointment.gif" width="300"
