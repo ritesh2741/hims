@@ -55,6 +55,26 @@ class PatientsController < ApplicationController
     @appointments = @patient.appointments
   end
 
+  def send_message
+    patient_id = params[:patient_id]
+    attachment_path = params[:path] || ''
+    SendMessage.perform_async(patient_id,attachment_path)
+    respond_to do |format|
+      format.html { redirect_to patient_path(patient_id), notice: 'Message Sending' }
+      format.json { head :no_content }
+    end
+  end
+
+  def upload_attachment
+    directory = "public/uploads"
+    Dir.mkdir(directory) unless File.exists?(directory)
+    name = params[:upload][:datafile].original_filename
+    path = File.join(directory, name)
+    File.open(path, "wb") { |f| f.write(params[:upload][:datafile].read) }
+    flash[:notice] = "Attachment uploaded"
+    redirect_to patient_appointments_path(params[:patient_id],path: path)
+  end
+
   private
     def set_patient
       @patient = Patient.find(params[:id])

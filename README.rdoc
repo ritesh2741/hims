@@ -1,28 +1,38 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Roles of Super Admin
+  Can simply do every thing
+  Manage Doctors
+    -Create
+    -Read
+    -Update
+    -Delete
+  Manage Patients
+    -Create
+    -Read
+    -Update
+    -Delete
+        Appointments
+          View
+          Send Email
+          Send Email with/without attachments.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  Manage Appointments
+    -Create
+        The status of appointment is approved by default if super admin
+    -Read
+    -Update
+    -Delete
+    Can approve appointments
+
+Validations
+  - Only 4 appointments can be created in a day
+
+Admin
+
+Can View everything
+Can Add appointments with status of pending.
+Can Edit/Delete Doctor/Patients
+
+User
+
+Only has view permission

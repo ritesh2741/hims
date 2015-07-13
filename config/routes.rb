@@ -7,11 +7,15 @@ Rails.application.routes.draw do
   root 'admin#index'
   resources :admin, only: :index
   resources :doctors do
-    get 'appointments'
+    get :appointments
   end
-  resources :appointments
+  resources :appointments do
+    get :approve_or_reject
+  end
   resources :patients do
-    get 'appointments'
+    post :upload_attachment
+    get :appointments
+    get :send_message
     resources :reports
   end
 

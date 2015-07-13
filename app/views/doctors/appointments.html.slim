@@ -12,3 +12,5 @@ table.table.table-bordered
       td= appointment.patient.name
       td= appointment.schedule
       td= appointment.room
+= link_to 'Back', doctor_path(@doctor.id), class: 'btn btn-default'
+
