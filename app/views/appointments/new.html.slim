@@ -3,7 +3,7 @@
   .control-group
     = f.label :patient, class: 'control-label'
     .controls
-      = select_tag :patient_id, options_for_select(@patients.map {|p| [p.name, p.id]}), class: 'selectpicker', data: {"live-search": true}
+      = select_tag :patient_id, options_for_select(@patients.map {|p| [p.name, p.id]}), class: 'select_picker', data: {"live-search": true}
   		|
       |  Patient Not in list?
    	  a href="../patients/new"  Click Here
@@ -11,7 +11,7 @@
   .control-group
     = f.label :doctor, class: 'control-label'
     .controls
-      = select_tag :doctor_id, options_for_select(@doctors.map {|p| [p.name, p.id]}),class: 'selectpicker', data: {"live-search": true}
+      = select_tag :doctor_id, options_for_select(@doctors.map {|p| [p.name, p.id]}),class: 'select_picker', data: {"live-search": true}
   .control-group
     = f.label :schedule, class: 'control-label'
     .controls
