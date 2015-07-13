@@ -6,6 +6,6 @@ class Appointment < ActiveRecord::Base
   scope :approved_appointments, -> { where(status: 'Approved') }
 
   def bookable?
-    Appointment.where(doctor_id: doctor_id, schedule: schedule).approved_appointments.count < 4
+    Appointment.where(doctor_id: self.doctor_id, schedule: self.schedule).approved_appointments.count < 4
   end
 end
