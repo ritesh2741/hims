@@ -12,7 +12,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    modified_params = appointment_params.merge(doctor_id: params[:doctor_id], patient_id: params[:patient_id], schedule: params[:schedule], status: 'Pending')
+    modified_params = appointment_params.merge(doctor_id: params[:doctor_id], patient_id: params[:patient_id], status: 'Pending')
     @appointment = Appointment.new(modified_params)
     if @appointment.bookable?
       respond_to do |format|
@@ -45,6 +45,6 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:room)
+    params.require(:appointment).permit(:room, :schedule)
   end
 end

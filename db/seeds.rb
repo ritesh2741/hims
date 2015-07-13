@@ -32,7 +32,7 @@ patients = [
 ]
 Patient.create(patients)
 appointments = [
-	{schedule: '11/10/2016', room: 5, created_at: nil, updated_at: nil, patient_id: 5, doctor_id: 2, status: 'Approved'},
-	{schedule: '10/10/2016', room: 5, created_at: nil, updated_at: nil, patient_id: 5, doctor_id: 2, status: 'Pending'}
+	{schedule: '07/15/2015', room: 5, created_at: nil, updated_at: nil, patient_id: 5, doctor_id: 2, status: 'Approved'},
+	{schedule: '07/16/2015', room: 5, created_at: nil, updated_at: nil, patient_id: 5, doctor_id: 2, status: 'Pending'}
 ]
 Appointment.create(appointments)
