@@ -24,10 +24,10 @@ doctors = [
 Doctor.create(doctors)
 
 patients = [
-	{ name: 'Tony Hawk', description: 'Fracture Skull', dob: Date.parse('12/05/1951'), gender: 'Male', phone: 9841123456,address: 'Nepal'  },
-	{ name: 'Brett Lee', description: 'Stomach Problem', dob: Date.parse('1/12/1950'), gender: 'Male', phone: 9841098456, address: 'India'},
-	{ name: 'John', description: 'Headache', dob: Date.parse('1/2/1960'), gender: 'Male', phone: 9841126812, address: 'China' },
-	{ name: 'Ravindra', description: 'Mental Patient', dob: Date.parse('10/2/1956'), gender: 'Male', phone: 9841790456, address: 'Japan' }
+	{ name: 'Tony Hawk', description: 'Fracture Skull', dob: Date.parse('12/05/1951'), gender: 'Male', phone: 9841123456,address: 'Nepal',email_id: 'tony@test.com'},
+	{ name: 'Brett Lee', description: 'Stomach Problem', dob: Date.parse('1/12/1950'), gender: 'Male', phone: 9841098456, address: 'India',email_id:'brett@test.com'},
+	{ name: 'John', description: 'Headache', dob: Date.parse('1/2/1960'), gender: 'Male', phone: 9841126812, address: 'China',email_id:'john@test.com' },
+	{ name: 'Ravindra', description: 'Mental Patient', dob: Date.parse('10/2/1956'), gender: 'Male', phone: 9841790456, address: 'Japan',email_id:'ravindra@test.com' }
 ]
 Patient.create(patients)
 

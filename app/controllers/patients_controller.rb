@@ -55,6 +55,15 @@ class PatientsController < ApplicationController
     @appointments = @patient.appointments
   end
 
+  def send_message
+    patient_id =  params[:patient_id]
+    SendMessage.perform_async(patient_id)
+    respond_to do |format|
+      format.html { redirect_to patient_path(patient_id), notice: 'Message Sending' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     def set_patient
       @patient = Patient.find(params[:id])

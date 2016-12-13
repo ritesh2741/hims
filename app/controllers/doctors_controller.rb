@@ -33,6 +33,7 @@ class DoctorsController < ApplicationController
   end
 
   def update
+    @departments = Department.all
     respond_to do |format|
       if @doctor.update(doctor_params)
         format.html { redirect_to @doctor, notice: 'Doctor was successfully updated.' }
